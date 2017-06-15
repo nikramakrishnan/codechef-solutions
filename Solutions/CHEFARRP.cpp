@@ -1,23 +1,27 @@
-//TO DO
-#include<iostream>
+#include <iostream>
 using namespace std;
+
 int main(){
-int t,n,a[50],c;
-cin>>t;
-while(t--){
+  ios_base::sync_with_stdio(false);
+  int t;
+  cin>>t;
+  while (t--) {
+    int n;
     cin>>n;
-    for(int i=0;i<n;i++){
-        cin>>a[i];
+    int a[n];
+    for (int i = 0; i<n; i++) {
+      cin>>a[i];
     }
-    c=0;
-    for(int j=0;j<n;j++){
-        int sum=0,product=1;
-        for(int k=0;k<j;k++){
-            sum+=(a[k]);
-            product*=(a[k]);
-            if(sum==product) c+=1;
-        }
+    int count=0;
+    for (int i = 0; i < n; i++) {
+      int sum=0,prod=1;
+      for (int j = i; j >= 0; j--) {
+        sum+=a[j];
+        prod*=a[j];
+
+        if(sum==prod) count+=1;
+      }
     }
-    cout<<c<<endl;
-}
+    std::cout << count << '\n';
+  }
 }
